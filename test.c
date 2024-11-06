@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:03:36 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/06 17:40:26 by agorski          ###   ########.fr       */
+/*   Updated: 2024/11/06 18:11:25 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int close_window(t_mlx_data *data)
     exit(0);
     return (0);
 }
-int	handle_input(int keysym, t_mlx_data *data);
+//int	handle_input(int keysym, t_mlx_data *data);
 
 int	main(void)
 {
@@ -53,19 +53,19 @@ int	main(void)
 		free(data.mlx_serv);
 		return (MALLOC_ERROR);
 	}
-	mlx_key_hook(data.mlx_wind, handle_input, &data);
-    mlx_hook(data.mlx_wind, 17, 0, handle_input, NULL);
+	mlx_key_hook(data.mlx_wind, close_window, &data);
+    mlx_hook(data.mlx_wind, 17, 0, close_window, NULL);
 	mlx_loop(data.mlx_serv);
 	return (0);
 }
 
-int	handle_input(int keysym, t_mlx_data *data)
-{
-	if (keysym == XK_Escape || keysym == 0)
-	{
-		printf("The %d key (ESC) has been pressed\n\n", keysym);
-        close_window(data);
-	}
-	printf("The %d key has been pressed\n\n", keysym);
-	return (0);
-}
+// int	handle_input(int keysym, t_mlx_data *data)
+// {
+// 	if (keysym == XK_Escape || keysym == 0)
+// 	{
+// 		printf("The %d key (ESC) has been pressed\n\n", keysym);
+//         close_window(data);
+// 	}
+// 	printf("The %d key has been pressed\n\n", keysym);
+// 	return (0);
+// }
