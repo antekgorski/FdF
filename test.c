@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:03:36 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/06 17:27:36 by agorski          ###   ########.fr       */
+/*   Updated: 2024/11/06 17:40:26 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_mlx_data
 
 int close_window(t_mlx_data *data)
 {
-    mlx_destroy_window(data->mlx_serv, data->mlx_wind);
 	mlx_destroy_window(data->mlx_serv, data->mlx_wind);
 	mlx_destroy_display(data->mlx_serv);
     free(data->mlx_serv);
+    free(data);
     exit(0);
     return (0);
 }
