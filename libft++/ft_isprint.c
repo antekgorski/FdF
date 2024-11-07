@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/02/28 16:27:42 by agorski           #+#    #+#             */
+/*   Updated: 2024/03/13 18:48:24 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-
-typedef struct s_mlx
+int	ft_isprint(int c)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
-
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	if (c >= 32 && c <= 126)
+		return (16384);
+	else
+		return (0);
+}

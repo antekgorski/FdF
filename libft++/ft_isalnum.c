@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/02/28 10:29:19 by agorski           #+#    #+#             */
+/*   Updated: 2024/03/01 18:17:53 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-
-typedef struct s_mlx
+int	ft_isalnum(int c)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
-
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
+		return (8);
+	else
+		return (0);
+}

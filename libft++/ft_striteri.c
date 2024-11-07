@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/02 18:32:33 by agorski           #+#    #+#             */
+/*   Updated: 2024/04/02 23:07:59 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	size_t	i;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	i = 0;
+	if (s == NULL)
+		return ;
+	while (i < ft_strlen(s))
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
+}

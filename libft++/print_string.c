@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/24 11:38:13 by agorski           #+#    #+#             */
+/*   Updated: 2024/11/07 13:17:20 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+int	print_string(char *s)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	int	len;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	len = 0;
+	if (s == NULL)
+		return (write(1, "(null)", 6));
+	len = ft_strlen(s);
+	write(1, s, len);
+	return (len);
+}

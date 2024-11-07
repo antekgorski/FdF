@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/03/14 22:23:55 by agorski           #+#    #+#             */
+/*   Updated: 2024/03/14 23:39:18 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-
-typedef struct s_mlx
+int	ft_toupper(int c)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
-
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	if (c >= 97 && c <= 122)
+		c = c - 32;
+	return (c);
+}

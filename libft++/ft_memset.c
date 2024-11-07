@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/02/28 19:41:14 by agorski           #+#    #+#             */
+/*   Updated: 2024/03/14 17:43:28 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+void	*ft_memset(void *s, int c, size_t n)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	void	*temp_s;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	temp_s = s;
+	while (n--)
+	{
+		*((unsigned char *)temp_s++) = (unsigned char)c;
+	}
+	return (s);
+}

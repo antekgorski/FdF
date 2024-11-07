@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/04 22:05:57 by agorski           #+#    #+#             */
+/*   Updated: 2024/04/07 16:48:29 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
-
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	new->next = *lst;
+	*lst = new;
+}

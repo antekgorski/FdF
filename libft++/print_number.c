@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/25 15:18:11 by agorski           #+#    #+#             */
+/*   Updated: 2024/11/07 13:17:11 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+static int	ft_number_len(int number)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	int	len;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
+	len = 0;
+	if (number == 0)
+		return (1);
+	if (number < 0)
+		len++;
+	while (number != 0)
+	{
+		number /= 10;
+		len++;
+	}
+	return (len);
+}
 
-#endif
+int	print_number(int number)
+{
+	ft_putnbr_fd(number, 1);
+	return (ft_number_len(number));
+}

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/02/28 17:30:39 by agorski           #+#    #+#             */
+/*   Updated: 2024/03/21 10:54:24 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+size_t	ft_strlen(const char *str)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	int	i;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	i = 0;
+	while (*(str + i))
+		i++;
+	return (i);
+}

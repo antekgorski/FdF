@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/24 11:23:19 by agorski           #+#    #+#             */
+/*   Updated: 2024/11/07 13:16:59 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+int	print_char(int c)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
-
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	write(1, &c, 1);
+	return (1);
+}

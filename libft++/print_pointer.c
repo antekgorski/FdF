@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 19:36:11 by agorski          ###   ########.fr       */
+/*   Created: 2024/04/30 12:20:44 by agorski           #+#    #+#             */
+/*   Updated: 2024/11/07 13:17:15 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-typedef struct s_mlx
+int	print_pointer(void *ptr)
 {
-	void	*mlx_start;     //
-	void	*mlx_win;
-}			t_mlx;
+	int		len;
+	char	x;
 
-# include "minilibx-linux/mlx.h"
-# include "./libft++/libft.h"
-
-#endif
+	len = 0;
+	x = 'x';
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	len += write(1, "0x", 2);
+	len += print_hex((unsigned long int)ptr, x);
+	return (len);
+}
