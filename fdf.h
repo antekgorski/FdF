@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/08 19:06:39 by agorski          ###   ########.fr       */
+/*   Updated: 2024/11/09 13:19:41 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@
 // {
 
 // }
+
+// typedef struct s_data_game
+// {
+// 	void		*mlx_ptr;
+// 	void		*win_ptr;
+// 	int			total_collectibles;
+// 	int			moves_count;
+// 	t_map		map;
+// 	t_image		collectible_image;
+// 	t_image		exit_image;
+// 	t_image		wall_image;
+// 	t_image		floor_image;
+// 	t_player	player;
+// }				t_data_game;
 
 typedef struct s_mlx
 {
