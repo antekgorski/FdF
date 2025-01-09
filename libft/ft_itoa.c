@@ -6,23 +6,34 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:11:53 by agorski           #+#    #+#             */
-/*   Updated: 2024/03/31 23:56:00 by agorski          ###   ########.fr       */
+/*   Updated: 2024/12/22 09:56:18 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static char	*ft_set_str(int len)
 {
 	char	*temp;
 
-	temp = malloc((len + 1) * sizeof(char));
+	temp = ft_calloc((len + 1) * sizeof(char), 1);
 	if (temp == NULL)
 		return (NULL);
 	temp[len] = '\0';
 	return (temp);
 }
 
+/**
+ * @brief Counts the number of digits in an integer.
+ *
+ * This function calculates the number of digits in the given integer `n`.
+ * If the integer is negative, it also counts the negative sign.
+ *
+ * @param n The integer whose digits are to be counted.
+ *
+ * @return The number of digits in `n`,
+ *	including the negative sign if applicable.
+ */
 static int	ft_intlen(long len)
 {
 	int	count;
@@ -46,6 +57,14 @@ static int	ft_intlen(long len)
 	return (count);
 }
 
+/**
+* @attention MALLOC 
+* @brief Converts an integer to a string.
+* 
+* @param n The integer to be converted.
+*
+* @return The string representation of the integer.
+*/
 char	*ft_itoa(int n)
 {
 	long	temp;

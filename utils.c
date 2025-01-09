@@ -5,54 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/08 19:49:23 by agorski          ###   ########.fr       */
+/*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
+/*   Updated: 2025/01/09 17:54:01 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// Funkcja symulująca rysowanie piksela z kolorem (R, G, B)
-// void	putPixelWithColor(int x, int y,/* float r, float g, float b*/)
-// {
-// 	printf("Rysuję piksel na: (%d, %d)) //z kolorem R=%.2f, G=%.2f, B=%.2f\n",x,
-// 		y, r, g, b);
-// }
-// Kolor jest przekazywany jako liczba całkowita 32-bitowa w formacie ARGB (Alpha,Red, Green, Blue).
-// A - przezroczystość (0 - pełna przezroczystość, 255- pełna nieprzezroczystość),
-// R - czerwony (0-255),
-// G - zielony (0-255),
-// B - niebieski (0-255).
-// int color = (255 << 24) | (0 << 16) | (255 << 8) | 0;  // 0xFF00FF00
-
-void	drawLine(t_mlx *data, int x0, int y0, int x1, int y1/*float r0, float g0, float b0, float r1, float g1, float b1*/)
+/**
+ * @brief 	close program
+ * @brief destroy window and display also free pointer(mlx_win)
+ * @brief free pointer(mlx_start) and exit program
+ * @param data pointer to struct with mlx data
+ * @return 0
+ */
+int	close_program(t_mlx *data)
 {
-	int		dx;
-	int		dy;
-	float	xIncrement; //liczba zmiennoprzecinkowa
-	float	yIncrement;
-	float	x;
-	float	y;
+	mlx_destroy_window(data->mlx_start, data->mlx_win);
+	mlx_destroy_display(data->mlx_start);
+	free(data->mlx_start);
+	exit(0);
+}
 
-	dx = x1 - x0;
-	dy = y1 - y0;
-	int steps = fmax(fabs(dx), fabs(dy)); // Maksymalna różnica między x i y
-	// fabs zwraca wartość bezwzględną liczby zmiennoprzecinkowej(odleglosc).
-	//Funkcja fmax zwraca większą z dwóch liczb zmiennoprzecinkowych.
-	xIncrement = dx / (float)steps;
-	yIncrement = dy / (float)steps;
-	// float rIncrement = (r1 - r0) / steps;
-	// float gIncrement = (g1 - g0) / steps;
-	// float bIncrement = (b1 - b0) / steps;
-	int i = 0; // Inicjalizacja zmiennej kontrolującej pętlę
-	while (i <= steps)
-	{ // Obliczanie współrzędnych i kolorów na podstawie interpolacji
-		x = round(x0 + i * xIncrement);//Funkcja round() zaokrągla podaną wartość do najbliższej liczby całkowitej.
-		y = round(y0 + i * yIncrement);
-		// float r = r0 + i * rIncrement;
-		// float g = g0 + i * gIncrement;
-		// float b = b0 + i * bIncrement;
-		mlx_pixel_put(data->mlx_start, data->mlx_win, x, y, 0xFFFFFFFF /* r, g, b*/);
-		i++;
+/**
+ * @brief 	print error message and exit
+ * @param s error message
+ * @param status exit status
+ */
+void	ft_panic(char *s, int status)
+{
+	ft_putstr_fd(s, 2);
+	exit(status);
+}
+
+/**
+ * @brief 	open file
+ * @param filename name of file
+ * @return file descriptor
+ */
+int	ft_open(const char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Failed to open a file.\n");
+		exit(1);
 	}
+	return (fd);
+}
+
+/**
+ * @brief 	read file
+ * @param av table of arguments(strings)
+ * @param data game data
+ */
+void	ft_read_file(char **av, t_map *map)
+{
+	int	fd;
+
+	fd = ft_open(av[1]);
+	ft_read(fd, map);
+	close(fd);
+}
+
+/**
+ * @brief 	count number of elements in table
+ * @param tab table of strings
+ * @return number of lines in table
+ */
+int	ft_count_tab_line(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

@@ -3,21 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:18:55 by agorski           #+#    #+#             */
-/*   Updated: 2024/11/07 13:43:46 by agorski          ###   ########.fr       */
+/*   Updated: 2024/12/22 02:55:22 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Extracts the remaining content after the first newline character
+ * in a string.
+ *
+ * This function processes a given line to separate the content before the
+ * first newline character from the content after it. It modifies the original
+ * line to terminate at the newline character and returns a new string containing
+ * the remaining content.
+ *
+ * @param line A pointer to the input string which is expected to contain
+ * a newline character.
+ *
+ * @return A new string containing the content after the first newline character,
+ * or NULL if no newline is found or if the allocated memory fails.
+ *
+ * @note The input string will be modified to terminate at the newline character.
+ *       It is the caller's responsibility to free the memory allocated for the 
+ *       returned string.
+ */
 static char	*read_to_buffer(char *buffer, int fd)
 {
 	char	*temp;
 	int		bytes;
 
-	temp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	temp = (char *)ft_calloc(sizeof(char) * (BUFFER_SIZE + 1), 1);
 	if (!temp)
 		return (0);
 	bytes = 1;
@@ -50,7 +69,7 @@ static char	*load_to_line(char *buffer)
 		i++;
 	if (buffer[i] == '\n')
 		i++;
-	str = (char *)malloc(sizeof(char) * (i + 1));
+	str = (char *)ft_calloc(sizeof(char) * (i + 1), 1);
 	if (!str)
 		return (0);
 	str[i] = '\0';
@@ -78,7 +97,7 @@ char	*update_buffer(char *buffer)
 		free(buffer);
 		return (0);
 	}
-	str = (char *)malloc(sizeof(char) * (gnl_strlen(buffer) - i + 1));
+	str = (char *)ft_calloc(sizeof(char) * (gnl_strlen(buffer) - i + 1), 1);
 	if (!str)
 		return (0);
 	while (buffer[i])
@@ -88,6 +107,13 @@ char	*update_buffer(char *buffer)
 	return (str);
 }
 
+/**
+ * @brief Reads the next line from a file descriptor.
+ *
+ * @param fd The file descriptor to read from.
+ * 
+ * @return The next line from the file descriptor, or NULL if an error occurs.
+ */
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
