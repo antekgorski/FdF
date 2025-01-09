@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 18:21:10 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:48:29 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-
-typedef struct s_color
-{
-	int		r;
-	int		g;
-	int		b;
-}			t_color;
 
 typedef struct s_mlx
 {
@@ -49,8 +42,7 @@ typedef struct s_map
 
 // drow functions
 
-void	drawLine(t_mlx *data, int x0, int y0, int x1, int y1 /*, float r0,
-				float g0, float b0, float r1, float g1, float b1*/);
+void	drawLine(t_mlx *data, t_point start, t_point end);
 
 // utils functions
 

@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 17:54:01 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:49:47 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param data pointer to struct with mlx data
  * @return 0
  */
-int	close_program(t_mlx *data)
+int	ft_close_program(t_mlx *data)
 {
 	mlx_destroy_window(data->mlx_start, data->mlx_win);
 	mlx_destroy_display(data->mlx_start);

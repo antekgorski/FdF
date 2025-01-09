@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 17:56:44 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:50:01 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_key(int keycode, t_mlx *data)
 void	ft_event_handle(t_mlx *data)
 {
 	mlx_key_hook(data->mlx_win, handle_key, &data);
-	mlx_hook(data->mlx_win, 17, 0, close_program, &data);
+	mlx_hook(data->mlx_win, 17, 0, ft_close_program, &data);
 }
 
 /**
@@ -49,7 +49,7 @@ void	ft_mlx_init(t_mlx *data)
 	data->mlx_start = mlx_init();
 	if (data->mlx_start == NULL)
 		return (1);
-	data->mlx_win = mlx_new_window(data->mlx_start, WIDTH, HEIGHT, "FdF"); // init new window
+	data->mlx_win = mlx_new_window(data->mlx_start, WIDTH, HEIGHT, "FdF");
 	if (data->mlx_win == NULL)
 	{
 		mlx_destroy_display(data->mlx_start);

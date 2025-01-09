@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 18:44:56 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:46:48 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @param | - OR, & - AND, >> - right shift, << - left shift
  * @return color
  */
-int ft_color_int(int start, int end, int i, int steps)
+static int ft_color_int(int start, int end, int i, int steps)
 {
 	int r;
 	int g;
