@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 18:50:01 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 19:15:51 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int	handle_key(int keycode, t_mlx *data)
 {
 	if (keycode == 65307)
-		close_program(data);
+		ft_close_program(data);
 	return (0);
 }
 
@@ -48,12 +48,12 @@ void	ft_mlx_init(t_mlx *data)
 {
 	data->mlx_start = mlx_init();
 	if (data->mlx_start == NULL)
-		return (1);
+		ft_panic("mlx_init failed\n", 1);
 	data->mlx_win = mlx_new_window(data->mlx_start, WIDTH, HEIGHT, "FdF");
 	if (data->mlx_win == NULL)
 	{
 		mlx_destroy_display(data->mlx_start);
 		free(data->mlx_start);
-		return (1);
+		ft_panic("mlx_new_window failed\n", 1);
 	}
 }
