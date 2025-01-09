@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_mapreader.c                                   :+:      :+:    :+:   */
+/*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 16:39:59 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/09 20:27:24 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fdf.h"
 
 void	draw_map(t_game2 *data)
 {
@@ -33,7 +35,7 @@ void	draw_map(t_game2 *data)
 	}
 }
 
-t_list	**append_row(t_list **table, t_list *row)
+static t_list	**append_row(t_list **table, t_list *row)
 {
 	t_list	**new_argv;
 	int		i;
@@ -55,33 +57,41 @@ t_list	**append_row(t_list **table, t_list *row)
 	return (new_argv);
 }
 
-void	ft_read(int fd, t_game2 *data)
+static void	ft_set_point(char **color_p, char **point, t_tab_point *row, int i)
 {
-	char	**line;
-	char	*line;
-	t_list	*row;
-	t_list	**table;
-	int		i;
+	color_p = ft_split(point[i], ',');
+	row[i].alt = ft_atoi(point[i]);
+	if (ft_count(color_p) == 2)
+		row[i].color = ft_atoi(color_p[1]);
+	else
+		row[i].color = 0xFFFFFF;
+}
 
-	line = get_next_line(fd);
-	while (line)
+void	ft_read(int fd, t_mlx *data)
+{
+	t_read	read;
+
+	read.line = get_next_line(fd);
+	while (read.line)
 	{
-		line = ft_split(line, ' ');
-		free(line);
-		line = NULL;
-		i = ft_count(line);
-		row = malloc(sizeof(t_list) * (i + 1));
-		i = 0;
-		while (line[i])
+		read.point = ft_split(read.line, ' ');
+		free(read.line);
+		read.line = NULL;
+		read.i = ft_count(read.point);
+		read.row = malloc(sizeof(t_tab_point) * (read.i + 1));
+		read.i = 0;
+		while (read.point[read.i])
 		{
-			row[i].string = chunks[i];
-			free(chunks[i]);
-			i++;
+			ft_set_point(read.color_p, read.point, read.row, read.i);
+			read.i++;
 		}
-		free(chunks); // might be error
-		chunks = NULL;
-		row[i].string = NULL;
-		data->map_table = append_row(table, row);
-		line = get_next_line(fd);
+		ft_free_tab((void **)read.point);
+		ft_free_tab((void **)read.color_p);
+		read.tab = append_row(data->map->map_table, read.row);
+		free(read.row);
+		ft_free_tab((void **)data->map->map_table);
+		data->map->map_table = read.tab;
+		ft_free_tab((void **)read.tab);
+		read.line = get_next_line(fd);
 	}
 }
