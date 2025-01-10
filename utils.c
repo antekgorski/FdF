@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 18:49:47 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:25:44 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	ft_open(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Failed to open a file.\n");
-		exit(1);
+		ft_printf("loading file: [%s] filed: %s", filename, strerror(errno));
+		exit(errno);
 	}
 	return (fd);
 }
@@ -61,12 +61,12 @@ int	ft_open(const char *filename)
  * @param av table of arguments(strings)
  * @param data game data
  */
-void	ft_read_file(char **av, t_map *map)
+void	ft_read_file(char **arg, t_mlx *data)
 {
 	int	fd;
 
-	fd = ft_open(av[1]);
-	ft_read(fd, map);
+	fd = ft_open(arg[1]);
+	ft_read(fd, data);
 	close(fd);
 }
 
@@ -75,7 +75,7 @@ void	ft_read_file(char **av, t_map *map)
  * @param tab table of strings
  * @return number of lines in table
  */
-int	ft_count_tab_line(char **tab)
+int	ft_count_line(char **tab)
 {
 	int	i;
 

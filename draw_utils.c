@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 18:46:48 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/10 15:33:50 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int ft_color_int(int start, int end, int i, int steps)
  * @brief 	x and y and color. interpolation
  * @param data pointer to struct with mlx data
  */
-void	drawLine(t_mlx *data, t_point start, t_point end)
+void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 {
 	int		dx;
 	int		dy;
@@ -73,3 +73,26 @@ void	drawLine(t_mlx *data, t_point start, t_point end)
 		i++;
 	}
 }
+
+// void	draw_map(t_mlx *data)
+// {
+// 	int		n;
+// 	int		x;
+// 	int		y;
+// 	int		scale;
+// 	t_point	**array;
+
+// 	x = 50;
+// 	y = 50;
+// 	n = 0;
+// 	array = data->map->map_table;
+// 	scale = data->map->scale;
+// 	while (&array[n])
+// 	{
+// 		if (&array[n + 1] != NULL)
+// 			ft_draw_line(x, y, x + (50 * scale), y + (25 + scale));
+// 		x += 50 * scale;
+// 		y = 25 * scale;
+// 		n++;
+// 	}
+// }

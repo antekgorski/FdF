@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:18:55 by agorski           #+#    #+#             */
-/*   Updated: 2024/12/22 02:52:44 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/10 11:07:59 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,15 @@ char	*update_buffer(char *buffer)
 	return (str);
 }
 
+/**
+ * @attention <<MALLOC>>
+ * @warning <<MALLOC>>
+ * @brief Get the next line from a file descriptor.
+ * @param fd The file descriptor.
+ * @return The next line.
+ * @return NULL if there is an error or file is empty or EOF.
+ * @return NULL if the buffer size is invalid.
+ */
 char	*get_next_line(int fd)
 {
 	static char	*buffer[4096];

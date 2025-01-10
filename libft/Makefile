@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+         #
+#    By: agorski <agorski@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 16:10:34 by agorski           #+#    #+#              #
-#    Updated: 2024/12/23 16:41:58 by agorski          ###   ########.fr        #
+#    Updated: 2025/01/10 11:06:56 by agorski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,8 @@ ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strcmp.c ft_memchr.c ft_me
 ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 ft_putnbr_fd.c ft_printf.c print_char.c print_string.c print_hex.c print_number.c \
-print_unsigned.c print_pointer.c get_next_line_bonus.c get_next_line.c get_next_line_utils_bonus.c \
-get_next_line_utils.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-ft_lstdelone.c \
+print_unsigned.c print_pointer.c get_next_line_bonus.c get_next_line_utils_bonus.c \
+ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 
 all: $(NAME)
 
