@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/10 15:33:50 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 18:50:13 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@
  * @param | - OR, & - AND, >> - right shift, << - left shift
  * @return color
  */
-static int ft_color_int(int start, int end, int i, int steps)
+static int	ft_color_int(int start, int end, int i, int steps)
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 
 	r = (start >> 16) + i * ((end >> 16) - (start >> 16)) / steps;
-	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF)) / steps;
+	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))
+		/ steps;
 	b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
 	return (r << 16 | g << 8 | b);
 }
@@ -48,26 +49,18 @@ static int ft_color_int(int start, int end, int i, int steps)
  */
 void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 {
-	int		dx;
-	int		dy;
-	float	xIncrement;
-	float	yIncrement;
-	float	x;
-	float	y;
-	int		steps;
-	int		i;
-	int color;
+	t_l_drw	;
 
 	dx = end.x - start.x;
 	dy = end.y - start.y;
 	steps = fmax(abs(dx), abs(dy));
-	xIncrement = dx / (float)steps;
-	yIncrement = dy / (float)steps;
+	x_inc = dx / (float)steps;
+	y_inc = dy / (float)steps;
 	i = 0;
 	while (i <= steps)
 	{
-		x = round(start.x + i * xIncrement);
-		y = round(start.y + i * yIncrement);
+		x = round(start.x + i * x_inc);
+		y = round(start.y + i * y_inc);
 		color = ft_color_int(start.color, end.color, i, steps);
 		mlx_pixel_put(data->mlx_start, data->mlx_win, x, y, color);
 		i++;

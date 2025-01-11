@@ -6,13 +6,14 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 12:44:19 by agorski           #+#    #+#             */
-/*   Updated: 2024/12/20 14:13:04 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 17:32:52 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
+ * @attention <<MALLOC>>
  * @brief Allocates and zeroes memory for an array.
  *
  * The function allocates memory for an array of `nmemb` elements, each of 
@@ -30,7 +31,7 @@
  * 
  * @warning If the product of `nmemb` and `size` exceeds the maximum 
  *          size of an `int` (2147483647 bytes), the function returns `NULL` 
- *          to avoid overflow.
+ *          to avoid overflow. <<MALLOC>>
  */
 void	*ft_calloc(size_t nmemb, size_t size)
 {

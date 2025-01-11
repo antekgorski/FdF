@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/09 19:15:51 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 17:13:53 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	handle_key(int keycode, t_mlx *data)
  */
 void	ft_event_handle(t_mlx *data)
 {
-	mlx_key_hook(data->mlx_win, handle_key, &data);
-	mlx_hook(data->mlx_win, 17, 0, ft_close_program, &data);
+	mlx_key_hook(data->mlx_win, handle_key, data);
+	mlx_hook(data->mlx_win, 17, 0, ft_close_program, data);
 }
 
 /**

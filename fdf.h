@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 15:07:00 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 18:46:17 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_point
 	int		color;
 	int		x;
 	int		y;
+	size_t	row_width;
 }			t_point;
 
 /**
@@ -75,6 +76,31 @@ typedef struct s_read
 	int		j;
 }			t_read;
 
+/**
+ * @brief Structure that contains the data for drow line.
+ * @param	int		dx;
+ * @param	int		dy;
+ * @param	float	x_inc;
+ * @param	float	y_inc;
+ * @param	float	x;
+ * @param	float	y;
+ * @param	int		steps;
+ * @param	int		i;
+ * @param	int		color;
+ */
+typedef struct s_l_drw
+{
+	int		dx;
+	int		dy;
+	float	x_inc;
+	float	y_inc;
+	float	x;
+	float	y;
+	int		steps;
+	int		i;
+	int		color;
+}			t_l_drw;
+
 // drow functions
 
 void		ft_draw_line(t_mlx *data, t_point start, t_point end);
@@ -97,5 +123,6 @@ int			handle_key(int keycode, t_mlx *data);
 // free functions
 
 void		ft_free_tab(void ***table);
+void		ft_free_map(t_mlx *data);
 
 #endif
