@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/10 17:35:35 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 15:51:21 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_point	**append_row(t_point **table, t_point *row)
 	i = 0;
 	while (table && table[i])
 		i++;
-	new_argv = malloc(sizeof(t_list *) * (i + 2));
+	new_argv = malloc(sizeof(t_point *) * (i + 2));
 	if (new_argv == NULL)
 		ft_panic("malloc", 1);
 	i = 0;
@@ -42,7 +42,7 @@ static void	ft_set_point(t_read *read)
 		read->row[read->i].color = ft_atoi(read->color_p[1]);
 	else
 		read->row[read->i].color = 0xFFFFFF;
-//	ft_free_tab((void ***)&read->color_p);
+	//	ft_free_tab((void ***)&read->color_p);
 	read->row[read->i].x = read->i;
 	read->row[read->i].y = read->j;
 	read->i++;
@@ -67,19 +67,18 @@ void	ft_read(int fd, t_mlx *data)
 	read.line = get_next_line(fd);
 	while (read.line)
 	{
+		data->map_height = read.j;
 		read.point = ft_split(read.line, ' ');
 		free(read.line);
 		read.line = NULL;
-		read.i = ft_count_line(read.point);
-		read.row = malloc(sizeof(t_point) * (read.i + 1));
+		data->map_width = ft_count_line(read.point);
+		read.row = malloc(sizeof(t_point) * (data->map_width + 1));
 		read.i = 0;
 		while (read.point[read.i])
 			ft_set_point(&read);
-		//ft_free_tab((void ***)&read.point);
+		// ft_free_tab((void ***)&read.point);
 		read.tab = append_row(data->map_table, read.row);
-		free(read.row);
-		read.row = NULL;
-		//ft_free_tab((void ***)&data->map_table);
+		// ft_free_tab((void ***)&data->map_table);
 		data->map_table = read.tab;
 		read.line = get_next_line(fd);
 		read.j++;
