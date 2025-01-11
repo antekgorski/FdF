@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 18:50:13 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 19:16:41 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_color_int(int start, int end, int i, int steps)
 }
 
 /**
- * @brief 	drow line between two points
+ * @brief 	drow line between two points with color interpolation.
  * @brief 	uses Bresenham's line algorithm
  * @brief 	https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
  * @brief 	https://www.geeksforgeeks.org/bresenhams-line-generation-algorithm/
@@ -46,24 +46,27 @@ static int	ft_color_int(int start, int end, int i, int steps)
  * @brief 	abs - returns the absolute value of an integer
  * @brief 	x and y and color. interpolation
  * @param data pointer to struct with mlx data
+ * @param start Starting point of the line.
+ * @param end Ending point of the line.
  */
 void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 {
-	t_l_drw	;
+	t_line_draw	line;
 
-	dx = end.x - start.x;
-	dy = end.y - start.y;
-	steps = fmax(abs(dx), abs(dy));
-	x_inc = dx / (float)steps;
-	y_inc = dy / (float)steps;
-	i = 0;
-	while (i <= steps)
+	line.dx = end.x - start.x;
+	line.dy = end.y - start.y;
+	line.steps = fmax(abs(line.dx), abs(line.dy));
+	line.x_inc = line.dx / (float)line.steps;
+	line.y_inc = line.dy / (float)line.steps;
+	line.i = 0;
+	while (line.i <= line.steps)
 	{
-		x = round(start.x + i * x_inc);
-		y = round(start.y + i * y_inc);
-		color = ft_color_int(start.color, end.color, i, steps);
-		mlx_pixel_put(data->mlx_start, data->mlx_win, x, y, color);
-		i++;
+		line.x = round(start.x + line.i * line.x_inc);
+		line.y = round(start.y + line.i * line.y_inc);
+		line.color = ft_color_int(start.color, end.color, line.i, line.steps);
+		mlx_pixel_put(data->mlx_start, data->mlx_win, line.x, line.y,
+			line.color);
+		line.i++;
 	}
 }
 

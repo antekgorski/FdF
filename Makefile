@@ -6,9 +6,11 @@
 #    By: agorski <agorski@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 14:35:59 by agorski           #+#    #+#              #
-#    Updated: 2025/01/10 16:40:21 by agorski          ###   ########.fr        #
+#    Updated: 2025/01/11 19:37:34 by agorski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./fdf ./.test_maps/mars.fdf
 
 NAME = fdf
 LIBFT_DIR = libft

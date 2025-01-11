@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 18:46:17 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/11 19:10:42 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_read
  * @param	int		i;
  * @param	int		color;
  */
-typedef struct s_l_drw
+typedef struct s_line_draw
 {
 	int		dx;
 	int		dy;
@@ -99,7 +99,7 @@ typedef struct s_l_drw
 	int		steps;
 	int		i;
 	int		color;
-}			t_l_drw;
+}			t_line_draw;
 
 // drow functions
 
