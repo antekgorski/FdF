@@ -6,13 +6,67 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 16:54:55 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:56:03 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_scale(t_mlx *data)
+static void	ft_center_y(t_mlx *data)
+{
+	size_t	i;
+	size_t	j;
+	int		h;
+
+	h = HEIGHT;
+	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height
+			- 1][0].y))
+	{
+		i = 0;
+		while (i + 1 <= (data->map_height))
+		{
+			j = 0;
+			while ((j + 1) <= (data->map_width))
+			{
+				data->map_table[i][j].y++;
+				if (j + 1 == data->map_table[i][j].row_width)
+					break ;
+				j++;
+			}
+			i++;
+		}
+	}
+}
+
+static void	ft_center_x(t_mlx *data)
+{
+	size_t	i;
+	size_t	j;
+
+	{
+		i = 0;
+		while (i + 1 <= (data->map_height))
+		{
+			j = 0;
+			while ((j + 1) <= (data->map_width))
+			{
+				data->map_table[i][j].x++;
+				if (j + 1 == data->map_table[i][j].row_width)
+					break ;
+				j++;
+			}
+			i++;
+		}
+	}
+}
+
+void	ft_map_center(t_mlx *data)
+{
+	ft_center_y(data);
+	ft_center_x(data);
+}
+
+void	ft_map_scale(t_mlx *data)
 {
 	size_t	i;
 	size_t	j;
@@ -46,7 +100,8 @@ void	ft_draw_map(t_mlx *data)
 		{
 			ft_draw_line(data, data->map_table[i][j], data->map_table[i][j
 				+ 1]);
-            ft_draw_line(data, data->map_table[i][j], data->map_table[i + 1][j]);
+			ft_draw_line(data, data->map_table[i][j], data->map_table[i
+				+ 1][j]);
 			if (j + 1 == data->map_table[i][j].row_width)
 				break ;
 			j++;

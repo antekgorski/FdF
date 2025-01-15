@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 16:39:47 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:47:00 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
  */
 typedef struct s_point
 {
-	int		alt;
-	int		color;
-	int		x;
-	int		y;
-	size_t	row_width;
-}			t_point;
+	int				alt;
+	unsigned int	color;
+	int				x;
+	int				y;
+	size_t			row_width;
+}					t_point;
 
 /**
  * @brief Structure that contains the mlx data.
@@ -47,14 +47,14 @@ typedef struct s_point
  */
 typedef struct s_mlx
 {
-	void	*mlx_start;
-	void	*mlx_win;
-	int		scale;
-	t_point	**map_table;
-	size_t	map_height;
-	size_t	map_width;
-	void   *img;
-}			t_mlx;
+	void			*mlx_start;
+	void			*mlx_win;
+	int				scale;
+	t_point			**map_table;
+	size_t			map_height;
+	size_t			map_width;
+	void			*img;
+}					t_mlx;
 
 /**
  * @brief Structure that contains the read data.
@@ -68,14 +68,14 @@ typedef struct s_mlx
  */
 typedef struct s_read
 {
-	char	*line;
-	char	**point;
-	char	**color_p;
-	t_point	*row;
-	t_point	**tab;
-	int		i;
-	int		j;
-}			t_read;
+	char			*line;
+	char			**point;
+	char			**color_p;
+	t_point			*row;
+	t_point			**tab;
+	int				i;
+	int				j;
+}					t_read;
 
 /**
  * @brief Structure that contains the data for drow line.
@@ -91,44 +91,44 @@ typedef struct s_read
  */
 typedef struct s_line_draw
 {
-	int		dx;
-	int		dy;
-	float	x_inc;
-	float	y_inc;
-	int	x;
-	int	y;
-	int		steps;
-	int		i;
-	int		color;
-}			t_line_draw;
+	int				dx;
+	int				dy;
+	float			x_inc;
+	float			y_inc;
+	int				x;
+	int				y;
+	int				steps;
+	int				i;
+	int				color;
+}					t_line_draw;
 
 // drow functions
 
-void		ft_draw_line(t_mlx *data, t_point start, t_point end);
-void		ft_drow_image(t_mlx *data);
-void		ft_pix_to_img(t_mlx *data, int x, int y, int color);
-void		ft_draw_map(t_mlx *data);
-void		ft_scale(t_mlx *data);
-
+void				ft_draw_line(t_mlx *data, t_point start, t_point end);
+void				ft_drow_image(t_mlx *data);
+void				ft_pix_to_img(t_mlx *data, int x, int y, int color);
+void				ft_draw_map(t_mlx *data);
+void				ft_map_scale(t_mlx *data);
+void				ft_map_center(t_mlx *data);
 
 // utils functions
 
-void		ft_panic(char *s, int status);
-int			ft_open(const char *filename);
-void		ft_read_file(char **av, t_mlx *data);
-int			ft_count_line(char **tab);
-int			ft_close_program(t_mlx *data);
-void		ft_read(int fd, t_mlx *data);
+void				ft_panic(char *s, int status);
+int					ft_open(const char *filename);
+void				ft_read_file(char **av, t_mlx *data);
+int					ft_count_line(char **tab);
+int					ft_close_program(t_mlx *data);
+void				ft_read(int fd, t_mlx *data);
 
 // mlx utils functions
 
-void		ft_event_handle(t_mlx *data);
-void		ft_mlx_init(t_mlx *data);
-int			handle_key(int keycode, t_mlx *data);
+void				ft_event_handle(t_mlx *data);
+void				ft_mlx_init(t_mlx *data);
+int					handle_key(int keycode, t_mlx *data);
 
 // free functions
 
-void		ft_free_tab(void ***table);
-void		ft_free_map(t_mlx *data);
+void				ft_free_tab(void ***table);
+void				ft_free_map(t_mlx *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 16:28:06 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:50:23 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static int	ft_color_int(int start, int end, int i, int steps)
 	int	g;
 	int	b;
 
+	if (steps == 0)
+		return (start);
 	r = (start >> 16) + i * ((end >> 16) - (start >> 16)) / steps;
 	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))
 		/ steps;
