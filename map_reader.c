@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 18:35:36 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:51:06 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ft_set_point(t_read *read, size_t row_width)
 	if (ft_count_line(read->color_p) == 2)
 		read->row[read->i].color = ft_atoi(read->color_p[1]);
 	else
-		read->row[read->i].color = 0xFFFFFF;
+		read->row[read->i].color = 0xFFFFFFFF;
 	ft_free_tab((void ***)&read->color_p);
 	read->row[read->i].row_width = row_width;
 	read->row[read->i].x = read->i;

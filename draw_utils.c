@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 14:52:31 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:28:06 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
  * @param x, y coordinate
  * @param color color in HEX format
  * @brief 	bits_per_pixel - number of bits per pixel
- * @brief 	size_line - number of bytes used to store one line of the image in memory
+ * @brief 	size_line
+		- number of bytes used to store one line of the image in memory
  * @brief 	endian - 0 = sever X is little endian, 1 = big endian
  * @brief 	data_addr - pointer to the image data
  * @brief 	pixel_offset - offset of the pixel in the image data
@@ -34,6 +35,8 @@ void	ft_pix_to_img(t_mlx *data, int x, int y, int color)
 
 	data_addr = mlx_get_data_addr(data->img, &bits_per_pixel, &size_line,
 			&endian);
+	if (data_addr == NULL)
+		ft_panic("mlx_get_data_addr failed\n", 1);
 	pixel_offset = (y * size_line) + (x * (bits_per_pixel / 8));
 	*(int *)(data_addr + pixel_offset) = color;
 }
@@ -58,7 +61,7 @@ static int	ft_color_int(int start, int end, int i, int steps)
 	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))
 		/ steps;
 	b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
-	return (r << 16 | g << 8 | b);
+	return (0xFF | r << 16 | g << 8 | b);
 }
 
 /**

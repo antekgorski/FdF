@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 18:37:02 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:15:49 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
  */
 int	ft_close_program(t_mlx *data)
 {
+	mlx_destroy_image(data->mlx_start, data->img);
 	mlx_destroy_window(data->mlx_start, data->mlx_win);
 	mlx_destroy_display(data->mlx_start);
 	free(data->mlx_start);
 	ft_free_map(data);
+	
 	exit(0);
 }
 

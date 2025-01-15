@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 14:49:45 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:39:47 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ typedef struct s_line_draw
 void		ft_draw_line(t_mlx *data, t_point start, t_point end);
 void		ft_drow_image(t_mlx *data);
 void		ft_pix_to_img(t_mlx *data, int x, int y, int color);
+void		ft_draw_map(t_mlx *data);
+void		ft_scale(t_mlx *data);
 
 
 // utils functions
