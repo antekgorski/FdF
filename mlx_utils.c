@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 17:13:53 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:25:28 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	handle_key(int keycode, t_mlx *data)
 }
 
 /**
- * @brief 	handle key press
- * @brief set key hook for window
+ * @brief 	handle event for close window
+ * @brief set hook for window
  * @brief 17 - (is code of x button)
  * @param data pointer to struct with mlx data
  * @return 0

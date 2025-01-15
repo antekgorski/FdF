@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 20:16:12 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/14 14:22:56 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 		ft_mlx_init(&data);
 		ft_event_handle(&data);
 		ft_map_test(&data);
+		ft_drow_image(&data);
 		mlx_loop(data.mlx_start);
 	}
 	return (0);

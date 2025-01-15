@@ -6,11 +6,37 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/11 19:16:41 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 14:52:31 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/**
+ * @brief 	put pixel to image
+ * @param data pointer to struct with mlx data
+ * @param x, y coordinate
+ * @param color color in HEX format
+ * @brief 	bits_per_pixel - number of bits per pixel
+ * @brief 	size_line - number of bytes used to store one line of the image in memory
+ * @brief 	endian - 0 = sever X is little endian, 1 = big endian
+ * @brief 	data_addr - pointer to the image data
+ * @brief 	pixel_offset - offset of the pixel in the image data
+ * @brief 	*(int *)(data_addr + pixel_offset) - set color to pixel
+ */
+void	ft_pix_to_img(t_mlx *data, int x, int y, int color)
+{
+	int		pixel_offset;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	char	*data_addr;
+
+	data_addr = mlx_get_data_addr(data->img, &bits_per_pixel, &size_line,
+			&endian);
+	pixel_offset = (y * size_line) + (x * (bits_per_pixel / 8));
+	*(int *)(data_addr + pixel_offset) = color;
+}
 
 /**
  * @brief 	interpolation of color
@@ -20,7 +46,7 @@
  * @param i current step
  * @param steps total steps
  * @param | - OR, & - AND, >> - right shift, << - left shift
- * @return color
+ * @return color in HEX format
  */
 static int	ft_color_int(int start, int end, int i, int steps)
 {
@@ -64,31 +90,7 @@ void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 		line.x = round(start.x + line.i * line.x_inc);
 		line.y = round(start.y + line.i * line.y_inc);
 		line.color = ft_color_int(start.color, end.color, line.i, line.steps);
-		mlx_pixel_put(data->mlx_start, data->mlx_win, line.x, line.y,
-			line.color);
+		ft_pix_to_img(data, line.x, line.y, line.color);
 		line.i++;
 	}
 }
-
-// void	draw_map(t_mlx *data)
-// {
-// 	int		n;
-// 	int		x;
-// 	int		y;
-// 	int		scale;
-// 	t_point	**array;
-
-// 	x = 50;
-// 	y = 50;
-// 	n = 0;
-// 	array = data->map->map_table;
-// 	scale = data->map->scale;
-// 	while (&array[n])
-// 	{
-// 		if (&array[n + 1] != NULL)
-// 			ft_draw_line(x, y, x + (50 * scale), y + (25 + scale));
-// 		x += 50 * scale;
-// 		y = 25 * scale;
-// 		n++;
-// 	}
-// }
