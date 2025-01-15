@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 20:47:00 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 23:52:13 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <string.h> // strerror
 # include <unistd.h> // close
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 10
+# define HEIGHT 10
 
 /**
  * @brief Structure that contains the point data.

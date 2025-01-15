@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 20:50:23 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 23:55:20 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	ft_color_int(int start, int end, int i, int steps)
 	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))
 		/ steps;
 	b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
-	return (0xFF | r << 16 | g << 8 | b);
+	return (0xFF000000 | r << 16 | g << 8 | b);
 }
 
 /**

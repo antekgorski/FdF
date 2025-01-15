@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 19:26:29 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 22:44:06 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_init_data(t_mlx *data, t_point **map_table)
 	data->mlx_start = NULL;
 	data->mlx_win = NULL;
 	data->map_table = map_table;
-	data->scale = 0;
+	data->scale = 5;
 }
 
 int	main(int argc, char **argv)

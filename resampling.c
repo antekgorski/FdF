@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resampling.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 20:56:03 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/15 23:22:43 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	ft_center_y(t_mlx *data)
 	int		h;
 
 	h = HEIGHT;
-	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height
-			- 1][0].y))
+	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height - 1][0].y))
 	{
 		i = 0;
 		while (i + 1 <= (data->map_height))
@@ -42,7 +41,10 @@ static void	ft_center_x(t_mlx *data)
 {
 	size_t	i;
 	size_t	j;
+	int		w;
 
+	w = WIDTH;
+	while ((data->map_table[0][0].x) < (w - data->map_table[0][data->map_width - 1].x))
 	{
 		i = 0;
 		while (i + 1 <= (data->map_height))
