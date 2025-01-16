@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 16:15:49 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:33:53 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_open(const char *filename)
 {
 	int	fd;
 
+	ft_printf("loading file: [%s]\n", filename);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{

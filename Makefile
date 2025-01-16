@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agorski <agorski@student.42.fr>            +#+  +:+       +#+         #
+#    By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 14:35:59 by agorski           #+#    #+#              #
-#    Updated: 2025/01/15 14:57:36 by agorski          ###   ########.fr        #
+#    Updated: 2025/01/16 12:20:14 by agorski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = fdf
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = draw_utils.c drow.c free_utils.c main.c map_reader.c mlx_utils.c resampling.c utils.c
+SRCS = draw_utils.c drow.c free_utils.c main.c map_reader.c mlx_utils.c resampling_tools.c resampling.c utils.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I minilibx-linux -I $(LIBFT_DIR)

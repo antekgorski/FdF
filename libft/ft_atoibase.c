@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoibase.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:05:45 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 20:15:25 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 11:09:26 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	ft_atoi_base(const char *str, int base)
 	int	digit;
 
 	result = 0;
-	ft_set_sign(str, &sign);
+	digit = 0;
+	sign = 1;
+	sign = ft_set_sign(str, &sign);
 	if (base == 16 && str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
 		str += 2;
 	while (*str)

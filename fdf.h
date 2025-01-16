@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 00:44:48 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:13:39 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <string.h> // strerror
 # include <unistd.h> // close
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1400
+# define HEIGHT 1000
 
 /**
  * @brief Structure that contains the point data.
@@ -108,6 +108,10 @@ void				ft_draw_line(t_mlx *data, t_point start, t_point end);
 void				ft_drow_image(t_mlx *data);
 void				ft_pix_to_img(t_mlx *data, int x, int y, int color);
 void				ft_draw_map(t_mlx *data);
+
+// resaampling functions
+
+void				ft_resampling(t_mlx *data);
 void				ft_map_scale(t_mlx *data);
 void				ft_map_center(t_mlx *data);
 

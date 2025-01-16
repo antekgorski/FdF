@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 00:45:19 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:14:06 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	ft_map_test(t_mlx *data)
 		while ((j + 1) <= (data->map_width))
 		{
 			ft_printf("[%d,%d] x:%d y:%d alt:%d rgb:%X row_len:%d map_len:%d\n",
-				i, j, data->map_table[i][j].x,
-				data->map_table[i][j].y, data->map_table[i][j].alt,
-				data->map_table[i][j].color, data->map_table[i][j].row_width,
-				data->map_width);
+				i, j, data->map_table[i][j].x, data->map_table[i][j].y,
+				data->map_table[i][j].alt, data->map_table[i][j].color,
+				data->map_table[i][j].row_width, data->map_width);
 			if (j + 1 == data->map_table[i][j].row_width)
 				break ;
 			j++;
@@ -42,7 +41,7 @@ void	ft_init_data(t_mlx *data, t_point **map_table)
 	data->mlx_start = NULL;
 	data->mlx_win = NULL;
 	data->map_table = map_table;
-	data->scale = 10;
+	data->scale = 2;
 }
 
 int	main(int argc, char **argv)
@@ -59,8 +58,7 @@ int	main(int argc, char **argv)
 		ft_read_file(argv, &data);
 		ft_mlx_init(&data);
 		ft_event_handle(&data);
-		ft_printf(" after take map\n");
-		ft_map_test(&data);
+		ft_resampling(&data);
 		ft_drow_image(&data);
 		mlx_loop(data.mlx_start);
 	}
