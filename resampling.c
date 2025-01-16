@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 23:22:43 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 01:04:52 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	ft_center_y(t_mlx *data)
 	int		h;
 
 	h = HEIGHT;
-	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height - 1][0].y))
+	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height
+			- 1][0].y))
 	{
 		i = 0;
 		while (i + 1 <= (data->map_height))
@@ -44,7 +45,8 @@ static void	ft_center_x(t_mlx *data)
 	int		w;
 
 	w = WIDTH;
-	while ((data->map_table[0][0].x) < (w - data->map_table[0][data->map_width - 1].x))
+	while ((data->map_table[0][0].x) < (w - data->map_table[0][data->map_width
+			- 1].x))
 	{
 		i = 0;
 		while (i + 1 <= (data->map_height))
@@ -95,15 +97,17 @@ void	ft_draw_map(t_mlx *data)
 	size_t	j;
 
 	i = 0;
-	while (i + 1 < (data->map_height))
+	while (i + 1 <= (data->map_height))
 	{
 		j = 0;
-		while ((j + 1) < (data->map_width))
+		while ((j + 1) <= (data->map_width))
 		{
-			ft_draw_line(data, data->map_table[i][j], data->map_table[i][j
-				+ 1]);
-			ft_draw_line(data, data->map_table[i][j], data->map_table[i
-				+ 1][j]);
+			if (j + 1 != data->map_table[i][j].row_width)
+				ft_draw_line(data, data->map_table[i][j], data->map_table[i][j
+					+ 1]);
+			if (i + 1 != data->map_height)
+				ft_draw_line(data, data->map_table[i][j], data->map_table[i
+					+ 1][j]);
 			if (j + 1 == data->map_table[i][j].row_width)
 				break ;
 			j++;

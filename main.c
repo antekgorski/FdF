@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 22:44:06 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 00:45:19 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_map_test(t_mlx *data)
 		}
 		i++;
 	}
+	ft_printf("\n\n<<<<<<<<<<>>>>>>>>>>\n\n");
 }
 
 void	ft_init_data(t_mlx *data, t_point **map_table)
@@ -41,7 +42,7 @@ void	ft_init_data(t_mlx *data, t_point **map_table)
 	data->mlx_start = NULL;
 	data->mlx_win = NULL;
 	data->map_table = map_table;
-	data->scale = 5;
+	data->scale = 10;
 }
 
 int	main(int argc, char **argv)
@@ -58,6 +59,7 @@ int	main(int argc, char **argv)
 		ft_read_file(argv, &data);
 		ft_mlx_init(&data);
 		ft_event_handle(&data);
+		ft_printf(" after take map\n");
 		ft_map_test(&data);
 		ft_drow_image(&data);
 		mlx_loop(data.mlx_start);

@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 23:55:20 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 01:28:20 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
  * @param x, y coordinate
  * @param color color in HEX format
  * @brief 	bits_per_pixel - number of bits per pixel
- * @brief 	size_line
-		- number of bytes used to store one line of the image in memory
+ * @brief 	size_line - number of bytes used to store one line of the image in memory
  * @brief 	endian - 0 = sever X is little endian, 1 = big endian
  * @brief 	data_addr - pointer to the image data
  * @brief 	pixel_offset - offset of the pixel in the image data
@@ -59,10 +58,11 @@ static int	ft_color_int(int start, int end, int i, int steps)
 
 	if (steps == 0)
 		return (start);
-	r = (start >> 16) + i * ((end >> 16) - (start >> 16)) / steps;
-	g = (start >> 8 & 0xFF) + i * ((end >> 8 & 0xFF) - (start >> 8 & 0xFF))
-		/ steps;
-	b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
+		    ft_printf("Start: 0x%X, End: 0x%X\n", start, end);
+    r = ((start >> 16) & 0xFF) + i * (((end >> 16) & 0xFF) - ((start >> 16) & 0xFF)) / steps;
+    g = ((start >> 8) & 0xFF) + i * (((end >> 8) & 0xFF) - ((start >> 8) & 0xFF)) / steps;
+    b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
+	// ft_printf("Step %d/%d: R=%d, G=%d, B=%d\n", i, steps, r, g, b);
 	return (0xFF000000 | r << 16 | g << 8 | b);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 20:46:48 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 01:38:47 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	ft_set_point(t_read *read, size_t row_width)
 	read->color_p = ft_split(read->point[read->i], ',');
 	read->row[read->i].alt = ft_atoi(read->color_p[0]);
 	if (ft_count_line(read->color_p) == 2)
-		read->row[read->i].color = ft_atoi(read->color_p[1]);
+		read->row[read->i].color = strtol(read->color_p[1], NULL, 16);
+	// read->row[read->i].color = ft_atoi(read->color_p[1]);
 	else
 		read->row[read->i].color = 0xFFFFFFFF;
 	ft_free_tab((void ***)&read->color_p);

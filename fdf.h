@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/15 23:52:13 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 00:44:48 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <string.h> // strerror
 # include <unistd.h> // close
 
-# define WIDTH 10
-# define HEIGHT 10
+# define WIDTH 800
+# define HEIGHT 600
 
 /**
  * @brief Structure that contains the point data.
@@ -125,6 +125,7 @@ void				ft_read(int fd, t_mlx *data);
 void				ft_event_handle(t_mlx *data);
 void				ft_mlx_init(t_mlx *data);
 int					handle_key(int keycode, t_mlx *data);
+void				ft_map_test(t_mlx *data);
 
 // free functions
 
