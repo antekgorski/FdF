@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 12:13:39 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:38:35 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@
 # include <string.h> // strerror
 # include <unistd.h> // close
 
+//window size
+
 # define WIDTH 1400
 # define HEIGHT 1000
+
+//base colors
+# define HI_COLOR 0xFF33CC
+# define MI_COLOR 0x00FF00
+# define LO_COLOR 0x0000FF
 
 /**
  * @brief Structure that contains the point data.
@@ -53,6 +60,8 @@ typedef struct s_mlx
 	t_point			**map_table;
 	size_t			map_height;
 	size_t			map_width;
+	int				max_alt;
+	int				min_alt;
 	void			*img;
 }					t_mlx;
 

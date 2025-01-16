@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 11:30:19 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:56:46 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,20 @@ static t_point	**append_row(t_point **table, t_point *row)
 	return (new_argv);
 }
 
-static void	ft_set_point(t_read *read, size_t row_width)
+void	ft_get_color(t_mlx *data, t_read *read)
+{
+	if (read->row[read->i].alt = 0)
+		read->row[read->i].color = 0xFFFFFFFF;
+}
+
+static void	ft_set_point(t_read *read, size_t row_width, t_mlx *data)
 {
 	read->color_p = ft_split(read->point[read->i], ',');
 	read->row[read->i].alt = ft_atoi(read->color_p[0]);
 	if (ft_count_line(read->color_p) == 2)
 		read->row[read->i].color = ft_atoi_base(read->color_p[1], 16);
 	else
-		read->row[read->i].color = 0xFFFFFFFF;
+		ft_get_color(data, read);
 	ft_free_tab((void ***)&read->color_p);
 	read->row[read->i].row_width = row_width;
 	read->row[read->i].x = read->i;

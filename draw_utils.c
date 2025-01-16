@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 11:19:09 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:16:34 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	ft_pix_to_img(t_mlx *data, int x, int y, int color)
  * @param | - OR, & - AND, >> - right shift, << - left shift
  * @return color in HEX format
  */
-static int	ft_color_int(int start, int end, int i, int steps)
+static int	ft_color_int(t_point start, t_point end, int i, int steps)
 {
 	int	r;
 	int	g;
 	int	b;
 
 	if (steps == 0)
-		return (start);
+		return (start.color);
 		   // ft_printf("Start: 0x%X, End: 0x%X\n", start, end);
-    r = ((start >> 16) & 0xFF) + i * (((end >> 16) & 0xFF) - ((start >> 16) & 0xFF)) / steps;
-    g = ((start >> 8) & 0xFF) + i * (((end >> 8) & 0xFF) - ((start >> 8) & 0xFF)) / steps;
-    b = (start & 0xFF) + i * ((end & 0xFF) - (start & 0xFF)) / steps;
+    r = ((start.color >> 16) & 0xFF) + i * (((end.color >> 16) & 0xFF) - ((start.color >> 16) & 0xFF)) / steps;
+    g = ((start.color >> 8) & 0xFF) + i * (((end.color >> 8) & 0xFF) - ((start.color >> 8) & 0xFF)) / steps;
+    b = (start.color & 0xFF) + i * ((end.color & 0xFF) - (start.color & 0xFF)) / steps;
 	// ft_printf("Step %d/%d: R=%d, G=%d, B=%d\n", i, steps, r, g, b);
 	return (0xFF000000 | r << 16 | g << 8 | b);
 }
@@ -94,7 +94,7 @@ void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 	{
 		line.x = round(start.x + line.i * line.x_inc);
 		line.y = round(start.y + line.i * line.y_inc);
-		line.color = ft_color_int(start.color, end.color, line.i, line.steps);
+		line.color = ft_color_int(start, end, line.i, line.steps);
 		ft_pix_to_img(data, line.x, line.y, line.color);
 		line.i++;
 	}
