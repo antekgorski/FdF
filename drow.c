@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:24:27 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 12:11:28 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 01:39:07 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	ft_draw_map(t_mlx *data)
 	size_t	j;
 
 	i = 0;
-	while (i + 1 <= (data->map_height))
+	while (i < (data->map_height))
 	{
 		j = 0;
-		while ((j + 1) <= (data->map_width))
+		while (j < (data->map_width))
 		{
 			if (j + 1 != data->map_table[i][j].row_width)
 				ft_draw_line(data, data->map_table[i][j], data->map_table[i][j

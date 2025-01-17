@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resampling.c                                       :+:      :+:    :+:   */
+/*   resampling_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 12:11:34 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 01:55:09 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	ft_center_y(t_mlx *data)
 			- 1][0].y))
 	{
 		i = 0;
-		while (i + 1 <= (data->map_height))
+		while (i < (data->map_height))
 		{
 			j = 0;
-			while ((j + 1) <= (data->map_width))
+			while (j < (data->map_width))
 			{
 				data->map_table[i][j].y++;
 				if (j + 1 == data->map_table[i][j].row_width)
@@ -49,10 +49,10 @@ static void	ft_center_x(t_mlx *data)
 			- 1].x))
 	{
 		i = 0;
-		while (i + 1 <= (data->map_height))
+		while (i < (data->map_height))
 		{
 			j = 0;
-			while ((j + 1) <= (data->map_width))
+			while (j < (data->map_width))
 			{
 				data->map_table[i][j].x++;
 				if (j + 1 == data->map_table[i][j].row_width)
@@ -76,10 +76,10 @@ void	ft_map_scale(t_mlx *data)
 	size_t	j;
 
 	i = 0;
-	while (i + 1 <= (data->map_height))
+	while (i < (data->map_height))
 	{
 		j = 0;
-		while ((j + 1) <= (data->map_width))
+		while (j < (data->map_width))
 		{
 			data->map_table[i][j].x *= data->scale;
 			data->map_table[i][j].y *= data->scale;
@@ -90,7 +90,16 @@ void	ft_map_scale(t_mlx *data)
 		i++;
 	}
 }
+// // Examples of different pointer casts:
 
+// // 1. Function pointer cast
+// void (*func)(t_point*) = (void (*)(t_point*))void_ptr;
+
+// // 2. Data pointer cast
+// int *number = (int*)void_ptr;
+
+// // 3. Structure pointer cast
+// t_point *point = (t_point*)void_ptr;
 // void	draw_map(t_mlx *data)
 // {
 // 	int		n;
