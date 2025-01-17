@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:12:16 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 13:19:03 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:15:56 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_map_resampler(t_mlx *data, point_resampler_t v_point)
 void	ft_first_look(t_mlx *data)
 {
 	ft_map_resampler(data, ft_map_scale);
-	ft_map_center(data);
+	ft_map_resampler(data, ft_map_center);
 }
 
 void	ft_user_resample(t_mlx *data, int keycode)
@@ -49,16 +49,25 @@ void	ft_user_resample(t_mlx *data, int keycode)
 	else if (keycode == 65364)
 		ft_map_resampler(data, map_move_down);
 	else if (keycode == 99)
-		ft_map_center(data);
+	{
+		ft_center_offset(data);
+		ft_map_resampler(data, ft_map_center);
+	}
 	else if (keycode == 61)
 	{
 		data->scale = 1.1;
+		ft_center_offset(data);
+		ft_map_resampler(data, ft_map_center);
 		ft_map_resampler(data, ft_map_scale);
+		ft_map_resampler(data, ft_map_recenter);
 	}
 	else if (keycode == 45)
 	{
 		data->scale = -1.1;
+		ft_center_offset(data);
+		ft_map_resampler(data, ft_map_center);
 		ft_map_resampler(data, ft_map_scale);
+		ft_map_resampler(data, ft_map_recenter);
 	}
 	ft_redraw(data);
 }

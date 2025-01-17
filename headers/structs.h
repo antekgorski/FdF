@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 13:53:36 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:07:33 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ typedef struct s_line_draw
 
 typedef struct s_center_ofsert
 {
-	int				i;
-	int				j;
+	size_t			i;
+	size_t			j;
 	int				min_x;
 	int				max_x;
 	int				min_y;

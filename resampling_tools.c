@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 13:59:29 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:23:05 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	map_move_down(t_mlx *data, t_point *point)
 	point->y += data->mov_ofset;
 }
 
-static void	ft_init_center_ofset(t_center_ofset *c_ofset, t_mlx *data)
+static void	ft_init_center_ofset(t_center_ofset *c_ofset)
 {
 	c_ofset->i = 0;
 	c_ofset->j = 0;
-	c_ofset->min_x = 0;
-	c_ofset->max_x = 0;
-	c_ofset->min_y = 0;
-	c_ofset->max_y = 0;
+	c_ofset->min_x = INT_MAX;
+	c_ofset->max_x = INT_MIN;
+	c_ofset->min_y = INT_MAX;
+	c_ofset->max_y = INT_MIN;
 	c_ofset->win_height = HEIGHT;
 	c_ofset->win_width = WIDTH;
 }
@@ -50,11 +50,18 @@ void	ft_map_center(t_mlx *data, t_point *point)
 	point->y += data->c_offset_y;
 }
 
+void	ft_map_recenter(t_mlx *data, t_point *point)
+{
+	point->x -= data->c_offset_x;
+	point->y -= data->c_offset_y;
+}
+
+
 void	ft_center_offset(t_mlx *data)
 {
 	t_center_ofset	c_ofset;
 
-	ft_init_center_ofset(&c_ofset, data);
+	ft_init_center_ofset(&c_ofset);
 	while (c_ofset.i < data->map_height)
 	{
 		while (c_ofset.j < data->map_width)
