@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 17:56:46 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 00:49:17 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,18 @@ static t_point	**append_row(t_point **table, t_point *row)
 	return (new_argv);
 }
 
-void	ft_get_color(t_mlx *data, t_read *read)
-{
-	if (read->row[read->i].alt = 0)
-		read->row[read->i].color = 0xFFFFFFFF;
-}
-
 static void	ft_set_point(t_read *read, size_t row_width, t_mlx *data)
 {
 	read->color_p = ft_split(read->point[read->i], ',');
 	read->row[read->i].alt = ft_atoi(read->color_p[0]);
+	if (read->row[read->i].alt > data->max_alt)
+		data->max_alt = read->row[read->i].alt;
+	else if (read->row[read->i].alt < data->min_alt)
+		data->min_alt = read->row[read->i].alt;
 	if (ft_count_line(read->color_p) == 2)
 		read->row[read->i].color = ft_atoi_base(read->color_p[1], 16);
 	else
-		ft_get_color(data, read);
+		read->row[read->i].color = 0;
 	ft_free_tab((void ***)&read->color_p);
 	read->row[read->i].row_width = row_width;
 	read->row[read->i].x = read->i;
@@ -83,7 +81,7 @@ void	ft_read(int fd, t_mlx *data)
 		read.row = malloc(sizeof(t_point) * (data->map_width));
 		read.i = 0;
 		while (read.point[read.i])
-			ft_set_point(&read, data->map_width);
+			ft_set_point(&read, data->map_width, data);
 		ft_free_tab((void ***)&read.point);
 		read.tab = append_row(data->map_table, read.row);
 		data->map_table = read.tab;

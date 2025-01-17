@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 17:38:35 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 01:11:40 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 # include <string.h> // strerror
 # include <unistd.h> // close
 
-//window size
+// window size
 
-# define WIDTH 1400
-# define HEIGHT 1000
+# define WIDTH 800
+# define HEIGHT 600
 
-//base colors
-# define HI_COLOR 0xFF33CC
-# define MI_COLOR 0x00FF00
-# define LO_COLOR 0x0000FF
+// base colors
+# define WHITE 0xFFFFFF
+# define BLUE 0x0000FF
+# define RED 0xFF0000
 
 /**
  * @brief Structure that contains the point data.
