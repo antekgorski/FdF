@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:12:16 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 14:15:56 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:35:33 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_map_resampler(t_mlx *data, point_resampler_t v_point)
 void	ft_first_look(t_mlx *data)
 {
 	ft_map_resampler(data, ft_map_scale);
+	ft_center_offset(data);
 	ft_map_resampler(data, ft_map_center);
 }
 
