@@ -1,34 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 01:11:40 by agorski          ###   ########.fr       */
+/*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
+/*   Updated: 2025/01/17 13:53:36 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef FDF_H
-# define FDF_H
-# include "libft.h"
-# include "mlx.h"
-# include <errno.h>  // perror
-# include <fcntl.h>  // open
-# include <math.h>   // fmax, abs
-# include <string.h> // strerror
-# include <unistd.h> // close
-
-// window size
-
-# define WIDTH 800
-# define HEIGHT 600
-
-// base colors
-# define WHITE 0xFFFFFF
-# define BLUE 0x0000FF
-# define RED 0xFF0000
 
 /**
  * @brief Structure that contains the point data.
@@ -56,13 +36,16 @@ typedef struct s_mlx
 {
 	void			*mlx_start;
 	void			*mlx_win;
-	int				scale;
+	float			scale;
 	t_point			**map_table;
 	size_t			map_height;
 	size_t			map_width;
 	int				max_alt;
 	int				min_alt;
 	void			*img;
+	int				mov_ofset;
+	int				c_offset_x;
+	int				c_offset_y;
 }					t_mlx;
 
 /**
@@ -111,38 +94,14 @@ typedef struct s_line_draw
 	int				color;
 }					t_line_draw;
 
-// drow functions
-
-void				ft_draw_line(t_mlx *data, t_point start, t_point end);
-void				ft_drow_image(t_mlx *data);
-void				ft_pix_to_img(t_mlx *data, int x, int y, int color);
-void				ft_draw_map(t_mlx *data);
-
-// resaampling functions
-
-void				ft_resampling(t_mlx *data);
-void				ft_map_scale(t_mlx *data);
-void				ft_map_center(t_mlx *data);
-
-// utils functions
-
-void				ft_panic(char *s, int status);
-int					ft_open(const char *filename);
-void				ft_read_file(char **av, t_mlx *data);
-int					ft_count_line(char **tab);
-int					ft_close_program(t_mlx *data);
-void				ft_read(int fd, t_mlx *data);
-
-// mlx utils functions
-
-void				ft_event_handle(t_mlx *data);
-void				ft_mlx_init(t_mlx *data);
-int					handle_key(int keycode, t_mlx *data);
-void				ft_map_test(t_mlx *data);
-
-// free functions
-
-void				ft_free_tab(void ***table);
-void				ft_free_map(t_mlx *data);
-
-#endif
+typedef struct s_center_ofsert
+{
+	int				i;
+	int				j;
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+	int				win_width;
+	int				win_height;
+}					t_center_ofset;

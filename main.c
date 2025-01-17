@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 00:10:24 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 13:54:35 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	ft_init_data(t_mlx *data, t_point **map_table)
 	data->max_alt = 0;
 	data->min_alt = 0;
 	data->img = NULL;
+	data->mov_ofset = 10;
+	data->c_offset_x = 0;
+	data->c_offset_y = 0;
 }
 
 int	main(int argc, char **argv)
@@ -63,8 +66,8 @@ int	main(int argc, char **argv)
 		ft_read_file(argv, &data);
 		ft_mlx_init(&data);
 		ft_event_handle(&data);
-		ft_resampling(&data);
-		ft_drow_image(&data);
+		ft_first_look(&data);
+		ft_draw_image(&data);
 		mlx_loop(data.mlx_start);
 	}
 	return (0);

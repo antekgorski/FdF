@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/14 16:25:28 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 12:46:23 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	handle_key(int keycode, t_mlx *data)
 {
 	if (keycode == 65307)
 		ft_close_program(data);
+	else
+		ft_user_resample(data, keycode);
+	ft_printf("keycode: %d\n", keycode);
+	
 	return (0);
 }
 

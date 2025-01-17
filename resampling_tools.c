@@ -3,92 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   resampling_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 01:55:09 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 13:59:29 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	ft_center_y(t_mlx *data)
+void	map_move_left(t_mlx *data, t_point *point)
 {
-	size_t	i;
-	size_t	j;
-	int		h;
-
-	h = HEIGHT;
-	while ((data->map_table[0][0].y) < (h - data->map_table[data->map_height
-			- 1][0].y))
-	{
-		i = 0;
-		while (i < (data->map_height))
-		{
-			j = 0;
-			while (j < (data->map_width))
-			{
-				data->map_table[i][j].y++;
-				if (j + 1 == data->map_table[i][j].row_width)
-					break ;
-				j++;
-			}
-			i++;
-		}
-	}
+	point->x -= data->mov_ofset;
 }
 
-static void	ft_center_x(t_mlx *data)
+void	map_move_right(t_mlx *data, t_point *point)
 {
-	size_t	i;
-	size_t	j;
-	int		w;
-
-	w = WIDTH;
-	while ((data->map_table[0][0].x) < (w - data->map_table[0][data->map_width
-			- 1].x))
-	{
-		i = 0;
-		while (i < (data->map_height))
-		{
-			j = 0;
-			while (j < (data->map_width))
-			{
-				data->map_table[i][j].x++;
-				if (j + 1 == data->map_table[i][j].row_width)
-					break ;
-				j++;
-			}
-			i++;
-		}
-	}
+	point->x += data->mov_ofset;
 }
 
-void	ft_map_center(t_mlx *data)
+void	map_move_up(t_mlx *data, t_point *point)
 {
-	ft_center_y(data);
-	ft_center_x(data);
+	point->y -= data->mov_ofset;
 }
 
-void	ft_map_scale(t_mlx *data)
+void	map_move_down(t_mlx *data, t_point *point)
 {
-	size_t	i;
-	size_t	j;
+	point->y += data->mov_ofset;
+}
 
-	i = 0;
-	while (i < (data->map_height))
+static void	ft_init_center_ofset(t_center_ofset *c_ofset, t_mlx *data)
+{
+	c_ofset->i = 0;
+	c_ofset->j = 0;
+	c_ofset->min_x = 0;
+	c_ofset->max_x = 0;
+	c_ofset->min_y = 0;
+	c_ofset->max_y = 0;
+	c_ofset->win_height = HEIGHT;
+	c_ofset->win_width = WIDTH;
+}
+
+void	ft_map_center(t_mlx *data, t_point *point)
+{
+	point->x += data->c_offset_x;
+	point->y += data->c_offset_y;
+}
+
+void	ft_center_offset(t_mlx *data)
+{
+	t_center_ofset	c_ofset;
+
+	ft_init_center_ofset(&c_ofset, data);
+	while (c_ofset.i < data->map_height)
 	{
-		j = 0;
-		while (j < (data->map_width))
+		while (c_ofset.j < data->map_width)
 		{
-			data->map_table[i][j].x *= data->scale;
-			data->map_table[i][j].y *= data->scale;
-			if (j + 1 == data->map_table[i][j].row_width)
-				break ;
-			j++;
+			if (data->map_table[c_ofset.i][c_ofset.j].x < c_ofset.min_x)
+				c_ofset.min_x = data->map_table[c_ofset.i][c_ofset.j].x;
+			if (data->map_table[c_ofset.i][c_ofset.j].x > c_ofset.max_x)
+				c_ofset.max_x = data->map_table[c_ofset.i][c_ofset.j].x;
+			if (data->map_table[c_ofset.i][c_ofset.j].y < c_ofset.min_y)
+				c_ofset.min_y = data->map_table[c_ofset.i][c_ofset.j].y;
+			if (data->map_table[c_ofset.i][c_ofset.j].y > c_ofset.max_y)
+				c_ofset.max_y = data->map_table[c_ofset.i][c_ofset.j].y;
+			c_ofset.j++;
 		}
-		i++;
+		c_ofset.i++;
 	}
+	data->c_offset_x = (c_ofset.win_width - (c_ofset.max_x - c_ofset.min_x)) / 2
+		- c_ofset.min_x;
+	data->c_offset_y = (c_ofset.win_height - (c_ofset.max_y - c_ofset.min_y))
+		/ 2 - c_ofset.min_y;
+}
+
+void	ft_map_scale(t_mlx *data, t_point *point)
+{
+	point->x *= data->scale;
+	point->y *= data->scale;
+	point->alt *= data->scale;
 }
 // // Examples of different pointer casts:
 
@@ -100,25 +93,15 @@ void	ft_map_scale(t_mlx *data)
 
 // // 3. Structure pointer cast
 // t_point *point = (t_point*)void_ptr;
-// void	draw_map(t_mlx *data)
-// {
-// 	int		n;
-// 	int		x;
-// 	int		y;
-// 	int		scale;
-// 	t_point	**array;
-
-// 	x = 50;
-// 	y = 50;
-// 	n = 0;
-// 	array = data->map->map_table;
-// 	scale = data->map->scale;
-// 	while (&array[n])
-// 	{
-// 		if (&array[n + 1] != NULL)
-// 			ft_draw_line(x, y, x + (50 * scale), y + (25 + scale));
-// 		x += 50 * scale;
-// 		y = 25 * scale;
-// 		n++;
-// 	}
-// }
+// int	w;
+// int	h;
+// w = WIDTH;
+// h = HEIGHT;
+// while ((data->map_table[0][0].x) < (w
+//	- data->map_table[0][data->map_width
+// 		- 1].x))
+// 	ft_map_resampler(data, map_move_right);
+// while ((data->map_table[0][0].y) < (h
+//		- data->map_table[data->map_height
+// 		- 1][0].y))
+// 	ft_map_resampler(data, map_move_down);

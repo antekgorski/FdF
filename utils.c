@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:44:09 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 11:33:53 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/17 10:12:31 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_close_program(t_mlx *data)
 	mlx_destroy_display(data->mlx_start);
 	free(data->mlx_start);
 	ft_free_map(data);
-	
 	exit(0);
 }
 
@@ -54,7 +53,7 @@ int	ft_open(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("loading file: [%s] filed: %s", filename, strerror(errno));
+		ft_printf("loading file: [%s] filed: %s\n", filename, strerror(errno));
 		exit(errno);
 	}
 	return (fd);
