@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 16:18:44 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:27:36 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_map_recenter(t_mlx *data, t_point *point)
 	point->off_y += data->c_offset_y;
 }
 
-
 void	ft_center_offset(t_mlx *data)
 {
 	t_center_ofset	c_ofset;
@@ -86,8 +85,8 @@ void	ft_center_offset(t_mlx *data)
 void	ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j)
 {
 	point->off_x = j * data->scale;
-	point->off_y =  i * data->scale;
-	point->off_z =  point->alt * data->scale;
+	point->off_y = i * data->scale;
+	point->off_z = point->alt * data->scale;
 }
 // // Examples of different pointer casts:
 
