@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 14:07:33 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:12:22 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
  * @param color The color of the point.
  * @param x The x coordinate of the point.
  * @param y The y coordinate of the point.
+ * @param z The z coordinate of the point.
  */
 typedef struct s_point
 {
 	int				alt;
 	unsigned int	color;
-	int				x;
-	int				y;
+	int				off_x;
+	int				off_y;
+	int				off_z;
 	size_t			row_width;
 }					t_point;
 

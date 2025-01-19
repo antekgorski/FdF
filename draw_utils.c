@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 12:55:14 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 15:02:41 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_pix_to_img(t_mlx *data, int x, int y, int color)
 /**
  * @brief 	interpolation of color
  * @brief color format 0xRRGGBB
+ * @brief https://www.w3schools.com/colors/colors_picker.asp
  * @param start start color
  * @param end end color
  * @param i current step

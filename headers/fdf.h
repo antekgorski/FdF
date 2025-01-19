@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 14:22:30 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:07:50 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 # include <errno.h>  // perror
 # include <fcntl.h>  // open
+# include <limits.h> // INT_MAX ect.
 # include <math.h>   // fmax, abs
 # include <string.h> // strerror
 # include <unistd.h> // close
-# include <limits.h> // INT_MAX ect.
 
 // mlx library, libft library, my own header file
 
@@ -40,7 +40,8 @@
 # define RED 0xFF0000
 
 // defining the function pointer to the resampling function
-typedef void	(*point_resampler_t)(t_mlx *data, t_point *point);
+typedef void	(*point_resampler_t)(t_mlx *data, t_point *point, size_t i,
+		size_t j);
 
 // drow functions
 
@@ -56,13 +57,13 @@ void			ft_first_look(t_mlx *data);
 void			ft_map_scale(t_mlx *data, t_point *point);
 void			ft_map_resampler(t_mlx *data, point_resampler_t v_point);
 void			ft_user_resample(t_mlx *data, int keycode);
-void            map_move_left(t_mlx *data, t_point *point);
-void            map_move_right(t_mlx *data, t_point *point);
-void            map_move_up(t_mlx *data, t_point *point);
-void            map_move_down(t_mlx *data, t_point *point);
-void            ft_center_offset(t_mlx *data);
-void            ft_map_center(t_mlx *data, t_point *point);
-void            ft_map_recenter(t_mlx *data, t_point *point);
+void			map_move_left(t_mlx *data, t_point *point);
+void			map_move_right(t_mlx *data, t_point *point);
+void			map_move_up(t_mlx *data, t_point *point);
+void			map_move_down(t_mlx *data, t_point *point);
+void			ft_center_offset(t_mlx *data);
+void			ft_map_center(t_mlx *data, t_point *point);
+void			ft_map_recenter(t_mlx *data, t_point *point);
 
 // utils functions
 
