@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 16:12:22 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 18:01:15 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_line_draw
 	int				color;
 }					t_line_draw;
 
-typedef struct s_center_ofsert
+typedef struct s_center_ofset
 {
 	size_t			i;
 	size_t			j;

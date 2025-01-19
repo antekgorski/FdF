@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 16:07:50 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:30:49 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void			ft_redraw(t_mlx *data);
 // resaampling functions
 
 void			ft_first_look(t_mlx *data);
-void			ft_map_scale(t_mlx *data, t_point *point);
+void			ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j);
 void			ft_map_resampler(t_mlx *data, point_resampler_t v_point);
 void			ft_user_resample(t_mlx *data, int keycode);
-void			map_move_left(t_mlx *data, t_point *point);
-void			map_move_right(t_mlx *data, t_point *point);
-void			map_move_up(t_mlx *data, t_point *point);
-void			map_move_down(t_mlx *data, t_point *point);
-void			ft_center_offset(t_mlx *data);
-void			ft_map_center(t_mlx *data, t_point *point);
-void			ft_map_recenter(t_mlx *data, t_point *point);
+void			map_move_left(t_mlx *data);
+void			map_move_right(t_mlx *data);
+void			map_move_up(t_mlx *data);
+void			map_move_down(t_mlx *data);
+void			ft_map_center(t_mlx *data);
+void			ft_apply_map_offset(t_mlx *data, t_point *point, size_t i,
+					size_t j);
 
 // utils functions
 

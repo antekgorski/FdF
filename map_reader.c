@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:31:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 00:49:17 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 18:45:24 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static void	ft_set_point(t_read *read, size_t row_width, t_mlx *data)
 		read->row[read->i].color = 0;
 	ft_free_tab((void ***)&read->color_p);
 	read->row[read->i].row_width = row_width;
-	read->row[read->i].x = read->i;
-	read->row[read->i].y = read->j;
 	read->i++;
 }
 

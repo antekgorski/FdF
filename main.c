@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 13:54:35 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:10:21 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	ft_map_test(t_mlx *data)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i + 1 <= (data->map_height))
-	{
-		j = 0;
-		while ((j + 1) <= (data->map_width))
-		{
-			ft_printf("[%d,%d] x:%d y:%d alt:%d rgb:%X row_len:%d map_len:%d\n",
-				i, j, data->map_table[i][j].x, data->map_table[i][j].y,
-				data->map_table[i][j].alt, data->map_table[i][j].color,
-				data->map_table[i][j].row_width, data->map_width);
-			if (j + 1 == data->map_table[i][j].row_width)
-				break ;
-			j++;
-		}
-		i++;
-	}
-	ft_printf("\n\n<<<<<<<<<<>>>>>>>>>>\n\n");
-}
 
 void	ft_init_data(t_mlx *data, t_point **map_table)
 {

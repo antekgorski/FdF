@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 15:02:41 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:09:08 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,16 @@ void	ft_draw_line(t_mlx *data, t_point start, t_point end)
 		start.color = ft_get_alt_color(start.alt, data->min_alt, data->max_alt);
 	if (end.color == 0)
 		end.color = ft_get_alt_color(end.alt, data->min_alt, data->max_alt);
-	line.dx = end.x - start.x;
-	line.dy = end.y - start.y;
+	line.dx = (end.off_x) - (start.off_x);
+	line.dy = (end.off_y) - (start.off_y);
 	line.steps = fmax(abs(line.dx), abs(line.dy));
 	line.x_inc = line.dx / (float)line.steps;
 	line.y_inc = line.dy / (float)line.steps;
 	line.i = 0;
 	while (line.i <= line.steps)
 	{
-		line.x = round(start.x + line.i * line.x_inc);
-		line.y = round(start.y + line.i * line.y_inc);
+		line.x = round(start.off_x + line.i * line.x_inc);
+		line.y = round(start.off_y + line.i * line.y_inc);
 		line.color = ft_color_int(start, end, line.i, line.steps);
 		ft_pix_to_img(data, line.x, line.y, line.color);
 		line.i++;
