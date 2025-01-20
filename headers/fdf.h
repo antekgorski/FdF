@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 19:30:49 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 01:38:54 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			map_move_down(t_mlx *data);
 void			ft_map_center(t_mlx *data);
 void			ft_apply_map_offset(t_mlx *data, t_point *point, size_t i,
 					size_t j);
+void			ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j);
 
 // utils functions
 

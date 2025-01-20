@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 20:04:22 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 02:06:45 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	map_move_left(t_mlx *data)
 {
-	data->c_offset_x -= data->mov_ofset;
+	data->m_offset_x -= data->mov_ofset;
 }
 
 void	map_move_right(t_mlx *data)
 {
-	data->c_offset_x += data->mov_ofset;
+	data->m_offset_x += data->mov_ofset;
 }
 
 void	map_move_up(t_mlx *data)
 {
-	data->c_offset_y -= data->mov_ofset;
+	data->m_offset_y -= data->mov_ofset;
 }
 
 void	map_move_down(t_mlx *data)
 {
-	data->c_offset_y += data->mov_ofset;
+	data->m_offset_y += data->mov_ofset;
 }
 
 static void	ft_init_center_ofset(t_center_ofset *c_ofset)
@@ -82,7 +82,22 @@ void	ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j)
 {
 	point->off_x = j * data->scale;
 	point->off_y = i * data->scale;
-	point->off_z = point->alt * data->scale;
+	point->off_z = (point->alt / 10) * data->scale;
+}
+
+void	ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j)
+{
+	float	prev_x;
+	float	prev_y;
+
+	(void)i;
+	(void)j;
+	if (data->isometric == 0)
+		return ;
+	prev_x = point->off_x;
+	prev_y = point->off_y;
+	point->off_x = (prev_x - prev_y) * cos(0.523599);
+	point->off_y = -point->off_z + (prev_x + prev_y) * sin(0.523599);
 }
 // // Examples of different pointer casts:
 

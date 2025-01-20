@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 18:01:15 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 01:50:50 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct s_mlx
 	int				mov_ofset;
 	int				c_offset_x;
 	int				c_offset_y;
+	int				m_offset_x;
+	int				m_offset_y;
+	int 			isometric;
 }					t_mlx;
 
 /**

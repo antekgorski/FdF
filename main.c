@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 19:10:21 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 01:51:16 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	ft_init_data(t_mlx *data, t_point **map_table)
 	data->mov_ofset = 10;
 	data->c_offset_x = 0;
 	data->c_offset_y = 0;
+	data->m_offset_x = 0;
+	data->m_offset_y = 0;
+	data->isometric = 1;
 }
 
 int	main(int argc, char **argv)
