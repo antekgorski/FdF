@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:05:26 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 01:51:16 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 19:47:34 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		ft_read_file(argv, &data);
 		ft_mlx_init(&data);
 		ft_event_handle(&data);
-		ft_first_look(&data);
+		ft_set_look(&data);
 		ft_draw_image(&data);
 		mlx_loop(data.mlx_start);
 	}

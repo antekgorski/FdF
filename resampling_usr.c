@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:07:41 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 18:57:48 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 19:47:44 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	ft_user_resample(t_mlx *data, int keycode)
 		data->scale *= 1.1;
 	if (keycode == K_MINUS)
 		data->scale *= 0.9;
-	ft_first_look(data);
+	ft_set_look(data);
 	ft_redraw(data);
 }

@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:12:16 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 18:40:09 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 19:47:17 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_map_resampler(t_mlx *data, point_resampler_t v_point)
 	}
 }
 
-void	ft_first_look(t_mlx *data)
+void	ft_set_look(t_mlx *data)
 {
 	ft_map_resampler(data, ft_map_scale);
 	ft_map_resampler(data, ft_isometric);

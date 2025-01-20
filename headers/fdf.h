@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 18:55:46 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 19:47:53 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			ft_redraw(t_mlx *data);
 
 // resaampling functions
 
-void			ft_first_look(t_mlx *data);
+void			ft_set_look(t_mlx *data);
 void			ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j);
 void			ft_map_resampler(t_mlx *data, point_resampler_t v_point);
 void			ft_user_resample(t_mlx *data, int keycode);
