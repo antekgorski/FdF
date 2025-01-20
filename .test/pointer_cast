@@ -1,0 +1,9 @@
+// // Examples of different pointer casts:
+
+// // 1. Function pointer cast
+// void (*func)(t_point*) = (void (*)(t_point*))void_ptr;
+
+// // 2. Data pointer cast
+// int *number = (int*)void_ptr;
+
+// // 3. Structure pointer cast

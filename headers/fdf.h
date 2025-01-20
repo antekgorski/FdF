@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 01:38:54 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 18:55:46 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,23 @@
 # define WIDTH 800
 # define HEIGHT 600
 
+// keycodes
+
+# define K_LEFT 65361
+# define K_RIGHT 65363
+# define K_UP 65362
+# define K_DOWN 65364
+# define K_C 99
+# define K_PLUS 61
+# define K_MINUS 45
+# define K_1 49
+# define K_2 50
+
 // base colors
 
 # define WHITE 0xFFFFFF
 # define BLUE 0x0000FF
-# define RED 0xFF0000
+# define RED 0x862B86
 
 // defining the function pointer to the resampling function
 typedef void	(*point_resampler_t)(t_mlx *data, t_point *point, size_t i,
@@ -57,14 +69,13 @@ void			ft_first_look(t_mlx *data);
 void			ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j);
 void			ft_map_resampler(t_mlx *data, point_resampler_t v_point);
 void			ft_user_resample(t_mlx *data, int keycode);
-void			map_move_left(t_mlx *data);
-void			map_move_right(t_mlx *data);
-void			map_move_up(t_mlx *data);
-void			map_move_down(t_mlx *data);
 void			ft_map_center(t_mlx *data);
-void			ft_apply_map_offset(t_mlx *data, t_point *point, size_t i,
+void			ft_apply_cent_offset(t_mlx *data, t_point *point, size_t i,
 					size_t j);
 void			ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j);
+void			ft_apply_m_offset(t_mlx *data, t_point *point, size_t i,
+					size_t j);
+void			ft_move_map(t_mlx *data, int key);
 
 // utils functions
 

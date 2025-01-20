@@ -6,7 +6,7 @@
 #    By: agorski <agorski@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 14:35:59 by agorski           #+#    #+#              #
-#    Updated: 2025/01/17 12:04:03 by agorski          ###   ########.fr        #
+#    Updated: 2025/01/20 17:32:59 by agorski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@
 NAME = fdf
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = draw_utils.c draw.c free_utils.c main.c map_reader.c mlx_utils.c resampling_tools.c resampling.c utils.c
+SRCS =	draw_utils.c draw.c free_utils.c main.c map_reader.c mlx_utils.c \
+		resampling_tools.c resampling_usr.c resampling.c utils.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I minilibx-linux -I $(LIBFT_DIR) -I headers

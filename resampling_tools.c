@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   resampling_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 02:06:45 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/20 18:31:41 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	map_move_left(t_mlx *data)
-{
-	data->m_offset_x -= data->mov_ofset;
-}
-
-void	map_move_right(t_mlx *data)
-{
-	data->m_offset_x += data->mov_ofset;
-}
-
-void	map_move_up(t_mlx *data)
-{
-	data->m_offset_y -= data->mov_ofset;
-}
-
-void	map_move_down(t_mlx *data)
-{
-	data->m_offset_y += data->mov_ofset;
-}
 
 static void	ft_init_center_ofset(t_center_ofset *c_ofset)
 {
@@ -70,7 +50,15 @@ void	ft_map_center(t_mlx *data)
 	data->c_offset_y -= ((c_ofset.min_y + c_ofset.max_y) / 2) - (HEIGHT / 2);
 }
 
-void	ft_apply_map_offset(t_mlx *data, t_point *point, size_t i, size_t j)
+void	ft_apply_m_offset(t_mlx *data, t_point *point, size_t i, size_t j)
+{
+	(void)i;
+	(void)j;
+	point->off_x += data->m_offset_x;
+	point->off_y += data->m_offset_y;
+}
+
+void	ft_apply_cent_offset(t_mlx *data, t_point *point, size_t i, size_t j)
 {
 	(void)i;
 	(void)j;
@@ -99,12 +87,3 @@ void	ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j)
 	point->off_x = (prev_x - prev_y) * cos(0.523599);
 	point->off_y = -point->off_z + (prev_x + prev_y) * sin(0.523599);
 }
-// // Examples of different pointer casts:
-
-// // 1. Function pointer cast
-// void (*func)(t_point*) = (void (*)(t_point*))void_ptr;
-
-// // 2. Data pointer cast
-// int *number = (int*)void_ptr;
-
-// // 3. Structure pointer cast
