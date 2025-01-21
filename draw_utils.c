@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:07:13 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/19 19:09:08 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 02:07:42 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,12 @@ static int	ft_color_int(t_point start, t_point end, int i, int steps)
 
 	if (steps == 0)
 		return (start.color);
-	// ft_printf("Start: 0x%X, End: 0x%X\n", start, end);
 	r = ((start.color >> 16) & 0xFF) + i * (((end.color >> 16) & 0xFF)
 			- ((start.color >> 16) & 0xFF)) / steps;
 	g = ((start.color >> 8) & 0xFF) + i * (((end.color >> 8) & 0xFF)
 			- ((start.color >> 8) & 0xFF)) / steps;
 	b = (start.color & 0xFF) + i * ((end.color & 0xFF) - (start.color & 0xFF))
 		/ steps;
-	// ft_printf("Step %d/%d: R=%d, G=%d, B=%d\n", i, steps, r, g, b);
 	return (0xFF000000 | r << 16 | g << 8 | b);
 }
 

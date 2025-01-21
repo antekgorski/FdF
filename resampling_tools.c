@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resampling_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:52:11 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 18:31:41 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 00:37:15 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,4 @@ void	ft_apply_cent_offset(t_mlx *data, t_point *point, size_t i, size_t j)
 	(void)j;
 	point->off_x += data->c_offset_x;
 	point->off_y += data->c_offset_y;
-}
-
-void	ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j)
-{
-	point->off_x = j * data->scale;
-	point->off_y = i * data->scale;
-	point->off_z = (point->alt / 10) * data->scale;
-}
-
-void	ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j)
-{
-	float	prev_x;
-	float	prev_y;
-
-	(void)i;
-	(void)j;
-	if (data->isometric == 0)
-		return ;
-	prev_x = point->off_x;
-	prev_y = point->off_y;
-	point->off_x = (prev_x - prev_y) * cos(0.523599);
-	point->off_y = -point->off_z + (prev_x + prev_y) * sin(0.523599);
 }

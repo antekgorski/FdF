@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:05:45 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/16 11:09:26 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 02:08:29 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,20 @@ static int	ft_set_sign(const char *str, int *sign)
 	return (*sign);
 }
 
+static void	ft_init_vars(int *result, int *digit, int *sign)
+{
+	*result = 0;
+	*digit = 0;
+	*sign = 1;
+}
+
 int	ft_atoi_base(const char *str, int base)
 {
 	int	result;
 	int	sign;
 	int	digit;
 
-	result = 0;
-	digit = 0;
-	sign = 1;
+	ft_init_vars(&result, &digit, &sign);
 	sign = ft_set_sign(str, &sign);
 	if (base == 16 && str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
 		str += 2;

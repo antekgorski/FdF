@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:12:10 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 19:47:53 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 02:05:14 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 # define K_MINUS 45
 # define K_1 49
 # define K_2 50
+# define K_W 119
+# define K_A 97
+# define K_S 115
+# define K_D 100
 
 // base colors
 
@@ -52,7 +56,7 @@
 # define RED 0x862B86
 
 // defining the function pointer to the resampling function
-typedef void	(*point_resampler_t)(t_mlx *data, t_point *point, size_t i,
+typedef void	(*t_point_resampler)(t_mlx *data, t_point *point, size_t i,
 		size_t j);
 
 // drow functions
@@ -67,7 +71,7 @@ void			ft_redraw(t_mlx *data);
 
 void			ft_set_look(t_mlx *data);
 void			ft_map_scale(t_mlx *data, t_point *point, size_t i, size_t j);
-void			ft_map_resampler(t_mlx *data, point_resampler_t v_point);
+void			ft_map_resampler(t_mlx *data, t_point_resampler v_point);
 void			ft_user_resample(t_mlx *data, int keycode);
 void			ft_map_center(t_mlx *data);
 void			ft_apply_cent_offset(t_mlx *data, t_point *point, size_t i,
@@ -76,6 +80,12 @@ void			ft_isometric(t_mlx *data, t_point *point, size_t i, size_t j);
 void			ft_apply_m_offset(t_mlx *data, t_point *point, size_t i,
 					size_t j);
 void			ft_move_map(t_mlx *data, int key);
+void			rotate_around_x(t_mlx *data, t_point *point, size_t i,
+					size_t j);
+void			rotate_around_y(t_mlx *data, t_point *point, size_t i,
+					size_t j);
+void			rotate_around_z(t_mlx *data, t_point *point, size_t i,
+					size_t j);
 
 // utils functions
 

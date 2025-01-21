@@ -6,7 +6,7 @@
 /*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:20:39 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/20 01:50:50 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 02:03:43 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ typedef struct s_mlx
 	int				c_offset_y;
 	int				m_offset_x;
 	int				m_offset_y;
-	int 			isometric;
+	int				isometric;
+	float			angle_x;
+	float			angle_y;
+	float			angle_z;
 }					t_mlx;
 
 /**

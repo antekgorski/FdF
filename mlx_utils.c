@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agorski <agorski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agorski <agorski@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:57:49 by agorski           #+#    #+#             */
-/*   Updated: 2025/01/17 12:46:23 by agorski          ###   ########.fr       */
+/*   Updated: 2025/01/21 02:07:20 by agorski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	handle_key(int keycode, t_mlx *data)
 	else
 		ft_user_resample(data, keycode);
 	ft_printf("keycode: %d\n", keycode);
-	
 	return (0);
 }
 
